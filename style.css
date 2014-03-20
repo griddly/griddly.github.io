@@ -22,10 +22,13 @@
     font-size: 20px;
     line-height: normal;
     padding: 4px 0 6px ;
-    margin-bottom: 20px;
     cursor: move;
 }
 
 ul {
     list-style-type: none;
+}
+
+.content {
+    padding: 10px;
 }
