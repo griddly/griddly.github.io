@@ -25,6 +25,7 @@
     var grid;
   
     $(function(){ //DOM loaded
+      grid = $("#grid ul").gridster().data('gridster');
       saveLayout();
       loadLayout();
       render();
@@ -50,7 +51,6 @@
     }
     
     function loadLayout(){
-      grid = $("#grid ul").gridster().data('gridster');
       var layout = JSON.parse($.cookie("grid-layout"));
       var content = $.cookie("grid-content").split("▷");
       
