@@ -11,14 +11,6 @@
     box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
 }
 
-
-#grid .gs-w.try {
-    background-image: url(../img/sprite.png);
-    background-repeat: no-repeat;
-    background-position: 37px -169px;
-
-}
-
 #grid .preview-holder {
     border: none!important;
     border-radius: 0!important;
