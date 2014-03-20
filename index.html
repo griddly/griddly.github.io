@@ -31,6 +31,7 @@
     });
     
     function render(){
+      grid.remove_all_widgets();
       $("#grid ul").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
@@ -38,7 +39,6 @@
           handle: '.drag-handle'
         }
       });
-      grid = $("#grid ul").gridster().data('gridster');
       addHandles();
     }
     
@@ -50,6 +50,7 @@
     }
     
     function loadLayout(){
+      grid = $("#grid ul").gridster().data('gridster');
       var layout = JSON.parse($.cookie("grid-layout"));
       var content = $.cookie("grid-content").split("▷");
       
