@@ -1,3 +1,29 @@
 <!doctype html>
 <html>
+  <head>
+    <title>griddly • all at once</title>
+    <script src="//code.jquery.com/jquery-1.11.0.js"></script>
+  </head>
+  <body>
+    <div id="grid">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+          Welcome to Griddly!
+        </li>
+        <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
+          Second Box
+        </li>
+      </ul>
+    </div>
+  <script type="text/javascript">
+    $(function(){
+      
+      $("#grid ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [140, 140]
+      });
+     
+    });
+  </script>
+  </body>
 </html>
