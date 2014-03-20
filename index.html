@@ -48,7 +48,7 @@
     function saveLayout(){
       $.cookie("grid-layout", JSON.stringify(grid.serialize()));
       
-      var content = $("li").map(function(){return $(this).text();}).get().join('▷');
+      var content = $("li").map(function(){return $(this).html();}).get().join('▷');
       $.cookie("grid-content", content);
     }
     
