@@ -40,6 +40,8 @@
       });
       $("li").css("position","absolute");
       addHandles();
+      
+      $(".content > iframe").parent().css("padding","0px");
     }
     
     function saveLayout(){
@@ -56,10 +58,10 @@
         var content = $.cookie("grid-content").split("▷");
         
         $.each(layout, function(i) {
-          grid.add_widget('<li>'+content[i]+'</li>', this.size_x, this.size_y, this.col, this.row);
+          grid.add_widget('<li><div class="content">'+content[i]+'</div></li>', this.size_x, this.size_y, this.col, this.row);
         });
       }else{
-        grid.add_widget('<li>Welcome to Griddly!</li>', 2, 2, 2, 1);
+        grid.add_widget('<li><div class="content">Welcome to Griddly!</div></li>', 2, 2, 2, 1);
       }
       render();
     }
