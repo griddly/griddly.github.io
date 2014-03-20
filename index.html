@@ -25,12 +25,12 @@
     var grid;
   
     $(function(){ //DOM loaded
-      onload();
+      loadLayout();
+      render();
+      saveLayout();
     });
     
-    function onload(){
-      loadLayout();
-      
+    function render(){
       $("#grid ul").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
@@ -39,10 +39,7 @@
         }
       });
       grid = $("#grid ul").gridster().data('gridster');
-      
       addHandles();
-      
-      saveLayout();
     }
     
     function saveLayout(){
@@ -61,7 +58,7 @@
         grid.add_widget('<li>'+content[i]+'</li>', this.size_x, this.size_y, this.col, this.row);
       });
       
-      addHandles();
+      render();
     }
     
     function addHandles(){
