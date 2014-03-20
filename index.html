@@ -3,6 +3,8 @@
   <head>
     <title>griddly • all at once</title>
     <script src="//code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="https://rawgithub.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
+    
     <link rel="stylesheet" href="style.css">
     
     <script src="http://gridster.net/dist/jquery.gridster.js"></script>
@@ -20,19 +22,41 @@
       </ul>
     </div>
   <script type="text/javascript">
-    $(function(){
-      
-      $("li").prepend('<div class="drag-handle" align="center"></div>');
-      
-      var grid = $("#grid ul").gridster({
-        widget_margins: [10, 10],
+    var grid;
+  
+    $(function(){ //DOM loaded
+      $("#grid ul").gridster({
+        widget_margins: [10, 1
         widget_base_dimensions: [140, 140],
         draggable: {
           handle: '.drag-handle'
         }
-      }).data("gridster");
-     
+      });
+      grid = $("#grid ul").gridster().data('gridster');
     });
+    
+    function saveLayout(){
+      $.cookie("grid-layout", JSON.stringify(grid.serialize()));
+      
+      var content = $("li").map(function(){return $(this).text();}).get().join('▷');
+      $.cookie("grid-content", content);
+    }
+    
+    function loadLayout(){
+      var layout = JSON.parse($.cookie("grid-layout"));
+      var content = $.cookie("grid-content").split("▷");
+      
+      grid.remove_all_widgets();
+      $.each(layout, function(i) {
+        grid.add_widget('<li>'+content[i]+'</li>', this.size_x, this.size_y, this.col, this.row);
+      });
+      
+      addHandles();
+    }
+    
+    function addHandles(){
+      $("li").prepend('<div class="drag-handle" align="center"></div>');
+    }
   </script>
   </body>
 </html>
