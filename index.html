@@ -25,6 +25,12 @@
     var grid;
   
     $(function(){ //DOM loaded
+      onload();
+    });
+    
+    function onload(){
+      loadLayout();
+      
       $("#grid ul").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
@@ -33,7 +39,11 @@
         }
       });
       grid = $("#grid ul").gridster().data('gridster');
-    });
+      
+      addHandles();
+      
+      saveLayout();
+    }
     
     function saveLayout(){
       $.cookie("grid-layout", JSON.stringify(grid.serialize()));
