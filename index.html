@@ -50,7 +50,6 @@
     }
     
     function loadLayout(){
-      render();
       grid.remove_all_widgets();
       if($.cookie("grid-layout")){
         var layout = JSON.parse($.cookie("grid-layout"));
@@ -62,6 +61,7 @@
       }else{
         grid.add_widget('<li>Welcome to Griddly!</li>', 2, 2, 2, 1);
       }
+      render();
     }
     
     function addHandles(){
