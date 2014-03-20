@@ -13,12 +13,12 @@
   <body>
     <div id="grid">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+        <!--<li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
           Welcome to Griddly!
         </li>
         <li data-row="2" data-col="1" data-sizex="1" data-sizey="3">
           Second Box
-        </li>
+        </li>-->
       </ul>
     </div>
   <script type="text/javascript">
@@ -26,7 +26,6 @@
   
     $(function(){ //DOM loaded
       grid = $("#grid ul").gridster().data('gridster');
-      saveLayout();
       loadLayout();
       render();
       saveLayout();
