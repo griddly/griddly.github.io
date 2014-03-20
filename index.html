@@ -26,6 +26,9 @@
   
     $(function(){ //DOM loaded
       grid = $("#grid ul").gridster().data('gridster');
+      if(!$.cookie("grid-layout")){
+        saveLayout();
+      }
       loadLayout();
       saveLayout();
     });
