@@ -22,11 +22,13 @@
   <script type="text/javascript">
     $(function(){
       
+      $("li").prepend('<div class="drag-handle">|||</div>');
+      
       $("#grid ul").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
         draggable: {
-          handle: 'header'
+          handle: 'drag-handle'
         }
       });
      
