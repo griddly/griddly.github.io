@@ -28,6 +28,7 @@
     
     function render(){
       $("#grid ul").gridster({
+        widget_selector: "li, iframe",
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
         helper: 'clone',
@@ -38,14 +39,7 @@
       
       grid.resizable({
         resize: {
-          enabled: true,
-          start: function(e, ui, $widget){
-            $("iframe").fadeOut("fast");
-          },
-          stop: function(e, ui, $widget){
-            update();
-            $("iframe").fadeIn("fast");
-          }
+          enabled: true
         }
       });
       
@@ -53,11 +47,11 @@
       addHandles();
       
       $(".content > iframe").parent().css("padding","0px");
-      update();
+      updateFrames();
     }
     
-    function update(){
-      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
+    function updateFrames(){
+      $(".content > iframe").attr("seamless","seamless").attr("width","100%")/*.attr("height",$(".content > iframe").parent().parent().outerHeight()-10)*/;
     }
     
     function saveLayout(){
