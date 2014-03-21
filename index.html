@@ -26,6 +26,14 @@
       }
       loadLayout();
       saveLayout();
+      
+      $('li').styleListener({
+      styles: ['height'],
+      changed: function(style) {
+        if(style=='height')
+          updateFrames();
+      }
+    });
     });
     
     function render(){
@@ -50,14 +58,6 @@
       $(".content > iframe").parent().css("padding","0px");
       updateFrames();
     }
-    
-    $('li').styleListener({
-      styles: ['height'],
-      changed: function(style, element) {
-        if(style=='height')
-          updateFrames();
-      }
-    });
     
     function updateFrames(){
       $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
