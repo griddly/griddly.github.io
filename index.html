@@ -39,13 +39,16 @@
         widget_base_dimensions: [140, 140],
         draggable: {
           handle: '.drag-handle'
+        },
+        resize: {
+          enabled: true
         }
       });
       $("li").css("position","absolute");
       addHandles();
       
       $(".content > iframe").parent().css("padding","0px");
-      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height","100%");
+      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().attr("height"));
     }
     
     function saveLayout(){
