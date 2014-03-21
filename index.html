@@ -9,6 +9,8 @@
     
     <script src="http://gridster.net/dist/jquery.gridster.js"></script>
     <link rel="stylesheet" href="http://gridster.net/dist/jquery.gridster.css">
+    
+    <script src="http://techfoobar.com/jquery-style-listener/stylelistener.jquery.js"></script>
   </head>
   <body>
     <div id="grid">
@@ -28,7 +30,6 @@
     
     function render(){
       $("#grid ul").gridster({
-        widget_selector: "li, iframe",
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
         helper: 'clone',
@@ -50,8 +51,16 @@
       updateFrames();
     }
     
+    $('li').styleListener({
+      styles: ['height'],
+      changed: function(style, element) {
+        if(style=='height')
+          updateFrames();
+      }
+    });
+    
     function updateFrames(){
-      $(".content > iframe").attr("seamless","seamless").attr("width","100%")/*.attr("height",$(".content > iframe").parent().parent().outerHeight()-10)*/;
+      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
     }
     
     function saveLayout(){
