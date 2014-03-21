@@ -61,9 +61,6 @@
     function initFrames(){
       $(".content > iframe").attr("seamless","seamless").attr("width","100%");
       
-      $(".content > iframe").parent().append('<div class="overlay" style="display: none;"></div>');
-      //$(".overlay").attr("height",);
-      
       updateFrames();
     }
     
@@ -108,15 +105,16 @@
       });
       
       $(".gs-resize-handle").mousedown(function(){
-        $(".overlay").fadeOut("fast",function(){
+        $(this).parent().find("iframe").fadeOut("fast",function(){
           $("iframe").finish();
         });
       });
       
       $(document).mouseup(function(){
-        $(".overlay").fadeIn("fast",function(){
-          $(".overlay").finish();
+        $("iframe").fadeIn("fast",function(){
+          $("iframe").finish();
         });
+        
       });
     }
     
