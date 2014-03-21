@@ -12,8 +12,8 @@
     
     <script src="http://techfoobar.com/jquery-style-listener/stylelistener.jquery.js"></script>
     
-    <script src="https://rawgithub.com/malihu/malihu-custom-scrollbar-plugin/master/jquery.mCustomScrollbar.js"></script>
-    <link href="jquery.mCustomScrollBar.css" rel="stylesheet" type="text/css">
+    <!--<script src="https://rawgithub.com/malihu/malihu-custom-scrollbar-plugin/master/jquery.mCustomScrollbar.js"></script>
+    <link href="jquery.mCustomScrollBar.css" rel="stylesheet" type="text/css">-->
   </head>
   <body>
     <div id="grid">
@@ -94,6 +94,10 @@
             updateFrames();
         }
       });
+      
+      $(document).mousedown(function(){
+        $("#grid").height($(window).height());
+      });
     }
     
     function firstTimeInit(){
@@ -102,11 +106,11 @@
       render();
     }
     
-    function initCSB(){
-      $(".content").mCustomScrollbar({
+    /*function initCSB(){
+      $("li").mCustomScrollbar({
         theme:"dark-thick"
       });
-    }
+    }*/
     
   </script>
   </body>
