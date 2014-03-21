@@ -35,12 +35,28 @@
           enabled: true
         }
       });
-      grid.resizable({resize:{enabled:true}});
+      
+      grid.resizable({
+        resize: {
+          enabled: true,
+          start: function(e, ui, $widget){
+            $("iframe").fadeOut("fast");
+          },
+          stop: function(e, ui, $widget){
+            update();
+            $("iframe").fadeIn("fast");
+          }
+        }
+      });
       
       $("li").css("position","absolute");
       addHandles();
       
       $(".content > iframe").parent().css("padding","0px");
+      update();
+    }
+    
+    function update(){
       $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
     }
     
