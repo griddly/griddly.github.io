@@ -60,13 +60,17 @@
     
     function initFrames(){
       $(".content > iframe").attr("seamless","seamless").attr("width","100%");
-      $(".content > iframe").append('<div class="overlay" style="display: none;"></div>');
+      
+      $(".content > iframe").parent().append('<div class="overlay" style="display: none;"></div>');
+      //$(".overlay").attr("height",);
       
       updateFrames();
     }
     
     function updateFrames(){
-      $(".content > iframe").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
+      $(".content > iframe").each(function(){
+        $(this).attr("height",$(this).parent().parent().outerHeight()-10);
+      });
     }
     
     function saveLayout(){
