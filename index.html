@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="http://gridster.net/dist/jquery.gridster.css">
     
     <script src="http://techfoobar.com/jquery-style-listener/stylelistener.jquery.js"></script>
+    
+    <script src="https://rawgithub.com/malihu/malihu-custom-scrollbar-plugin/master/jquery.mCustomScrollbar.js"></script>
+    <link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="grid">
@@ -21,19 +24,12 @@
   
     $(function(){ //DOM loaded
       grid = $("#grid ul").gridster().data('gridster');
+      
       if(!$.cookie("grid-layout")){
         firstTimeInit();
       }
       loadLayout();
       saveLayout();
-      
-      $('li').styleListener({
-      styles: ['height'],
-      changed: function(style) {
-        if(style=='height')
-          updateFrames();
-      }
-    });
     });
     
     function render(){
@@ -45,7 +41,6 @@
           enabled: true
         }
       });
-      
       grid.resizable({
         resize: {
           enabled: true
@@ -54,9 +49,10 @@
       
       $("li").css("position","absolute");
       addHandles();
-      
       $(".content > iframe").parent().css("padding","0px");
       updateFrames();
+      
+      createListeners();
     }
     
     function updateFrames(){
@@ -88,11 +84,22 @@
       $("li").append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
     }
     
+    function createListeners(){
+      $('li').styleListener({
+        styles: ['height'],
+        changed: function(style) {
+          if(style=='height')
+            updateFrames();
+        }
+      });
+    }
+    
     function firstTimeInit(){
       grid.add_widget('<li><div class="content">Welcome to Griddly!</div></li>', 2, 2, 2, 1);
       saveLayout();
       render();
     }
+    
   </script>
   </body>
 </html>
