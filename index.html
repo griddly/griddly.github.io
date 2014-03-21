@@ -48,7 +48,7 @@
       addHandles();
       
       $(".content > iframe").parent().css("padding","0px");
-      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().attr("height"));
+      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
     }
     
     function saveLayout(){
