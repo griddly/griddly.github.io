@@ -53,13 +53,20 @@
       $("li").css("position","absolute");
       addHandles();
       $(".content > iframe").parent().css("padding","0px");
-      updateFrames();
+      initFrames();
       
       createListeners();
     }
     
+    function initFrames(){
+      $(".content > iframe").attr("seamless","seamless").attr("width","100%");
+      $(".content > iframe").append('<div class="overlay" style="display: none;"></div>');
+      
+      updateFrames();
+    }
+    
     function updateFrames(){
-      $(".content > iframe").attr("seamless","seamless").attr("width","100%").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
+      $(".content > iframe").attr("height",$(".content > iframe").parent().parent().outerHeight()-10);
     }
     
     function saveLayout(){
@@ -94,6 +101,18 @@
           if(style=='height')
             updateFrames();
         }
+      });
+      
+      $(".gs-resize-handle").mousedown(function(){
+        $(".overlay").fadeOut("fast",function(){
+          $("iframe").finish();
+        });
+      });
+      
+      $(document).mouseup(function(){
+        $(".overlay").fadeIn("fast",function(){
+          $(".overlay").finish();
+        });
       });
     }
     
