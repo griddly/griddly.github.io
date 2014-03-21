@@ -12,14 +12,7 @@
   </head>
   <body>
     <div id="grid">
-      <ul>
-        <!--<li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-          Welcome to Griddly!
-        </li>
-        <li data-row="2" data-col="1" data-sizex="1" data-sizey="3">
-          Second Box
-        </li>-->
-      </ul>
+      <ul></ul>
     </div>
   <script type="text/javascript">
     var grid;
@@ -39,6 +32,9 @@
         widget_base_dimensions: [140, 140],
         draggable: {
           handle: '.drag-handle'
+        },
+        resize: {
+          enabled: true
         }
       });
       $("li").css("position","absolute");
