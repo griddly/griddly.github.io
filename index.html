@@ -30,6 +30,8 @@
       }
       loadLayout();
       saveLayout();
+      
+      initCSB();
     });
     
     function render(){
@@ -98,6 +100,12 @@
       grid.add_widget('<li><div class="content">Welcome to Griddly!</div></li>', 2, 2, 2, 1);
       saveLayout();
       render();
+    }
+    
+    function initCSB(){
+      $(".content").mCustomScrollbar({
+        theme:"dark-thick"
+      });
     }
     
   </script>
