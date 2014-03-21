@@ -24,7 +24,7 @@
   
     $(function(){ //DOM loaded
       grid = $("#grid ul").gridster().data('gridster');
-      $("#grid").height($(window).height());
+      $("#grid").height($(window).height()-8);
       
       if(!$.cookie("grid-layout")){
         firstTimeInit();
