@@ -54,14 +54,6 @@
       addHandles();
       $(".content > iframe").parent().css("padding","0px");
       initFrames();
-      
-      $('li').styleListener({
-        styles: ['height'],
-        changed: function(style) {
-          if(style=='height')
-            updateFrames();
-        }
-      });
     }
     
     function initFrames(){
