@@ -57,7 +57,7 @@
         }
       });
       
-      $("li").css("position","absolute");
+      $(".gs-w").css("position","absolute");
       addHandles();
       $(".content > iframe").parent().css("padding","0px");
       initFrames();
@@ -101,9 +101,9 @@
     
     function addHandles(){
       $(".drag-handle").remove();
-      $("li").prepend('<div class="drag-handle" align="center"></div>');
+      $(".gs-w").prepend('<div class="drag-handle" align="center"></div>');
       $(".gs-resize-handle").remove();
-      $("li").append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
+      $(".gs-w").append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
     }
     
     function createListeners(){
@@ -188,7 +188,7 @@
     jQuery.fn.exists = function(){return this.length>0;}
     
     /*function initCSB(){
-      $("li").mCustomScrollbar({
+      $(".gs-w").mCustomScrollbar({
         theme:"dark-thick"
       });
     }*/
