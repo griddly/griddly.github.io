@@ -33,8 +33,6 @@
       grid = $("#grid ul").gridster().data('gridster');
       $("#grid").height($(window).height()-8);
       
-      fillOutData();
-      
       if(!$.cookie("grid-layout")){
         firstTimeInit();
       }else{
@@ -43,10 +41,6 @@
       }
       //initCSB();
     });
-    
-    function fillOutData(){
-      $(".content").data("content",$.cookie("grid-content"));
-    }
     
     function render(){
       $("#grid ul").gridster({
@@ -89,7 +83,7 @@
     function saveLayout(){
       $.cookie("grid-layout", JSON.stringify(grid.serialize()));
       
-      var content = $(".content").map(function(){return $(this).data("content");}).get().join('Ꮻ');
+      var content = $(".content").map(function(){return $(this).html();}).get().join('Ꮻ');
       $.cookie("grid-content", content);
     }
     
