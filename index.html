@@ -14,6 +14,9 @@
     <script src="http://techfoobar.com/jquery-style-listener/stylelistener.jquery.js"></script>
     <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
     
+    <script src="https://rawgithub.com/griddly/griddly.github.io/master/markdownToHtml.js"></script>
+    <script src="https://rawgithub.com/griddly/griddly.github.io/master/htmlToMarkdown.js"></script>
+    
     <!--<script src="https://rawgithub.com/malihu/malihu-custom-scrollbar-plugin/master/jquery.mCustomScrollbar.js"></script>
     <link href="jquery.mCustomScrollBar.css" rel="stylesheet" type="text/css">-->
   </head>
@@ -173,21 +176,11 @@
     }
     
     function parseMD(input){
-      input = input.replace(/#(.+)/,'<h1 align="center">$1</h1>');
-      input = input.replace(/\n\n(.+)\n\n/,"<p>$1</p>");
-      
-      //after every other regex that involves \n
-      input = input.replace(/\n/,"<br />");
-      
-      return input;
+      return markdown.parse(input);
     }
     
-    function parseHTML(output){
-      output = output.replace(/<h1.*>(.+)<\/h1>/,"#$1");
-      output = output.replace(/<p.*>(.*)<\/p>/,"\n\n$1\n\n");
-      ouput = output.replace(/<br.*[\/]?>/,"\n");
-      
-      return output;
+    function parseHTML(input){
+      return html.parse(input);
     }
     
     jQuery.fn.exists = function(){return this.length>0;}
@@ -197,6 +190,8 @@
         theme:"dark-thick"
       });
     }*/
+    
+    
     
   </script>
   </body>
