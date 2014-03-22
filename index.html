@@ -161,7 +161,11 @@
       editing = true;
       var $content = $w.find(".content");
       if(!$content.find("textarea").exists()){
-        var content = $content.html();
+        var content,
+            cContent = $.cookie("grid-content").split("Ꮻ");
+        for(i=0;i<cContent.length;i++){
+          content = markdown.parse(cContent[i]) == $content.html() ? cContent[i] : undefined;
+        }
         $content.html('<textarea style="width: 100%;" class="editor" autofocus>'+content+'</textarea>');
         updateFrames();
       }
