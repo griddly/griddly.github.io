@@ -168,11 +168,13 @@
     }
     
     function updateWidget($w){
-      var content = parseMD($w.find(".editor").val());
-      $w.find(".editor").remove();
-      $w.find(".content").append(content);
-      render();
-      editing = false;
+      if($w.find(".editor").exists()){
+        var content = parseMD($w.find(".editor").val());
+        $w.find(".editor").remove();
+        $w.find(".content").append(content);
+        render();
+        editing = false;
+      }
     }
     
     function parseMD(input){
