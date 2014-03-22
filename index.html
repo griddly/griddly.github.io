@@ -152,9 +152,8 @@
     
     function editWidget($w){
       editing = true;
-      var $content = $(".content textarea").exists() ? $w.find("textarea").val() : $w.find(".content");
-      try{var content = $content.html();}
-      catch{}
+      var $content = $(".content textarea").exists() ? $w.find("textarea") : $w.find(".content");
+      var content = $content.html();
       $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
     }
     
