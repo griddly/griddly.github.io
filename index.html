@@ -156,8 +156,9 @@
       var $content = $w.find(".content");
       if(!$content.find("textarea").exists()){
         var content = $content.html();
-        $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
+        $content.html('<textarea style="width: 100%; height: '+$w.height()+'" class="editor" autofocus>'+content+'</textarea>');
       }
+      
     }
     
     function updateWidget($w){
