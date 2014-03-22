@@ -72,6 +72,9 @@
       $(".content > iframe").each(function(){
         $(this).attr("height",$(this).parent().parent().outerHeight()-10);
       });
+      $(".content > textarea").each(function(){
+        $(this).css("height",$(this).parent().parent().height()-30);
+      })
     }
     
     function saveLayout(){
@@ -156,9 +159,9 @@
       var $content = $w.find(".content");
       if(!$content.find("textarea").exists()){
         var content = $content.html();
-        $content.html('<textarea style="width: 100%; height: '+$w.height()-30+'px" class="editor" autofocus>'+content+'</textarea>');
+        $content.html('<textarea style="width: 100%;" class="editor" autofocus>'+content+'</textarea>');
+        updateFrames();
       }
-      
     }
     
     function updateWidget($w){
