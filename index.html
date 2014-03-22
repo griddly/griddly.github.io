@@ -161,7 +161,7 @@
       editing = true;
       var $content = $w.find(".content");
       if(!$content.find("textarea").exists()){
-        var content = parseHTML($content.html());
+        var content = $content.html();
         $content.html('<textarea style="width: 100%;" class="editor" autofocus>'+content+'</textarea>');
         updateFrames();
       }
@@ -169,7 +169,7 @@
     
     function updateWidget($w){
       if($w.find(".editor").exists()){
-        var content = parseMD($w.find(".editor").val());
+        var content = $w.find(".editor").val();
         $w.find(".editor").remove();
         $w.find(".content").append(content);
         render();
