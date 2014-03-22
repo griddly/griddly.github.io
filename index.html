@@ -22,7 +22,8 @@
       <ul></ul>
     </div>
   <script type="text/javascript">
-    var grid, keypressListener, editorListener;
+    var grid,
+        keypressListener = new window.keypress.Listener();
   
     $(function(){ //DOM loaded
       grid = $("#grid ul").gridster().data('gridster');
@@ -34,9 +35,6 @@
         loadLayout();
         saveLayout();
       }
-      
-      keypressListener = new window.keypress.Listener();
-      editorListener = new $(".editor").keypress.Listener();
       //initCSB();
     });
     
@@ -133,7 +131,7 @@
         addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
       });
       
-      editorListener.simple_combo("control enter", function(){
+      keypressListener.simple_combo("control enter", function(){
         updateWidget($(":focus").parent().parent());
       });
     }
