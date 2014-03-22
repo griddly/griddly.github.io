@@ -156,8 +156,8 @@
     
     function updateWidget($w){
       var content = $w.find(".editor").val();
-      $(".editor").remove();
-      $(".content").append(content);
+      $w.find(".editor").remove();
+      $w.find(".content").append(content);
     }
     
     /*function initCSB(){
