@@ -121,7 +121,7 @@
       });
       
       $(".drag-handle").mousedown(function(e){ 
-        if( e.button == 2 && !editing) { 
+        if(e.button==2) { 
           editWidget($(this).parent());
         }
       });
@@ -152,7 +152,7 @@
     
     function editWidget($w){
       editing = true;
-      var $content = $w.find(".content");
+      var $content = $.isArray($(".content textarea")) ? $w.find("textarea").val() : $w.find(".content");
       var content = $content.html();
       $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
     }
