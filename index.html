@@ -54,6 +54,8 @@
       addHandles();
       $(".content > iframe").parent().css("padding","0px");
       initFrames();
+      
+      createListeners();
     }
     
     function initFrames(){
@@ -112,7 +114,6 @@
         $("iframe").fadeIn("fast",function(){
           $("iframe").finish();
         });
-        
       });
     }
     
