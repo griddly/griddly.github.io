@@ -152,7 +152,7 @@
     
     function editWidget($w){
       editing = true;
-      var $content = $.isArray($(".content textarea")) ? $w.find("textarea").val() : $w.find(".content");
+      var $content = $(".content textarea").exists() ? $w.find("textarea").val() : $w.find(".content");
       var content = $content.html();
       $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
     }
@@ -164,6 +164,8 @@
       render();
       editing = false;
     }
+    
+    jQuery.fn.exists = function(){return this.length>0;}
     
     /*function initCSB(){
       $("li").mCustomScrollbar({
