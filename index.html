@@ -172,6 +172,20 @@
       editing = false;
     }
     
+    function parseInput(input){
+      input = input.replace(/#(.+)/,'<h1 align="center">$1</h1>');
+      input = input.replace(/\n\n(.+)\n\n/,"<p>$1</p>");
+      
+      //after every other regex that involves \n
+      input = input.replace(/\n/,"<br />");
+    }
+    
+    function parseOutput(output){
+      output = output.replace(/<h1.*>(.+)<\/h1>/,"#$1");
+      output = output.replace(/<p.*>(.*)<\/p>/,"\n\n$1\n\n");
+      ouput = output.replace(/<br.*[\/]?>/,"\n");
+    }
+    
     jQuery.fn.exists = function(){return this.length>0;}
     
     /*function initCSB(){
