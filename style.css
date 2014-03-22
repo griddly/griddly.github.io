@@ -13,6 +13,7 @@ h1 {
 .editor {
     resize: none;
     border: none;
+    font-family: 'Ubuntu Mono', Monospace;
 }
 
 
