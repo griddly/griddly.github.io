@@ -152,9 +152,11 @@
     
     function editWidget($w){
       editing = true;
-      var $content = $(".content textarea").exists() ? $w.find("textarea") : $w.find(".content");
-      var content = $(".content textarea").exists() ? $content.val() : $content.html();
-      $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
+      var $content = $w.find(".content");
+      if(!$content.find("textarea").exists()){
+        var content = $content.html();
+        $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
+      }
     }
     
     function updateWidget($w){
