@@ -17,13 +17,14 @@
     <!--<script src="https://rawgithub.com/malihu/malihu-custom-scrollbar-plugin/master/jquery.mCustomScrollbar.js"></script>
     <link href="jquery.mCustomScrollBar.css" rel="stylesheet" type="text/css">-->
   </head>
-  <body>
+  <body oncontextmenu="return false;">
     <div id="grid">
       <ul></ul>
     </div>
   <script type="text/javascript">
     var grid,
-        keypressListener = new window.keypress.Listener();
+        keypressListener = new window.keypress.Listener(),
+        editing = false;
   
     $(function(){ //DOM loaded
       grid = $("#grid ul").gridster().data('gridster');
@@ -119,13 +120,14 @@
         });
       });
       
-      $(".content").mousedown(function(e){ 
-        if( e.button == 2 ) { 
+      $(".drag-handle").mousedown(function(e){ 
+        if( e.button == 2 && !editing) { 
           editWidget($(this).parent());
         }
       });
       
-      
+      ///////////////////////////////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////////////////////
       
       keypressListener.simple_combo("alt n", function(){
         addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
@@ -149,6 +151,7 @@
     }
     
     function editWidget($w){
+      editing = true;
       var $content = $w.find(".content");
       var content = $content.html();
       $content.html('<textarea style="width: 100%;" class="editor">'+content+'</textarea>');
@@ -158,6 +161,8 @@
       var content = $w.find(".editor").val();
       $w.find(".editor").remove();
       $w.find(".content").append(content);
+      render();
+      editing = false;
     }
     
     /*function initCSB(){
