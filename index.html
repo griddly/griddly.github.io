@@ -44,6 +44,7 @@
     
     function render(){
       $("#grid ul").gridster({
+        widget_selector: ".widget",
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
         helper: 'clone',
@@ -93,7 +94,7 @@
       var content = $.cookie("grid-content").split("Ꮻ");
       
       $.each(layout, function(i) {
-        grid.add_widget('<li><div class="content">'+content[i]+'</div></li>', this.size_x, this.size_y, this.col, this.row);
+        grid.add_widget('<div class="content">'+content[i]+'</div>', this.size_x, this.size_y, this.col, this.row);
       });
       
       render();
@@ -146,13 +147,13 @@
     }
     
     function firstTimeInit(){
-      grid.add_widget('<li><div class="content"><h1 align="center">Welcome to Griddly!</h1>><p>Right click this box to edit it. &nbsp;If you want to load a website, copy its url and paste it here.</p></div></li>', 2, 2, 2, 1);
+      grid.add_widget('<div class="content"><h1 align="center">Welcome to Griddly!</h1><p>Right click this box to edit it. &nbsp;If you want to load a website, copy its url and paste it here.</p></div>', 2, 2, 2, 1);
       saveLayout();
       render();
     }
     
     function addWidget(content, size_x, size_y, col, row){
-      grid.add_widget('<li><div class="content">'+content+'</div></li>', size_x, size_y, col, row);
+      grid.add_widget('<div class="content">'+content+'</div>', size_x, size_y, col, row);
       saveLayout();
       render();
     }
