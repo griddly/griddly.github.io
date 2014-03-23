@@ -138,17 +138,15 @@
       
       ///////////////////////////////////////////////////////////////////////////////////////////
       ///////////////////////////////////////////////////////////////////////////////////////////
-    var options = [
-        {
-            "keys"          : "alt n",
-            "prevent_repeat"  : true,
-            "on_keyup"      : function(e) {
-                addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
-
-            }
+      
+      var options = {
+        "keys"          : "alt n",
+        "prevent_repeat"  : true,
+        "on_keyup"      : function(e) {
+          addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
         }
-      ];
-    keypressListener.register_combo(options);
+      }
+      keypressListener.register_combo(options);
       
       keypressListener.simple_combo("alt n", function(){
               });
@@ -174,12 +172,7 @@
       editing = true;
       var $content = $w.find(".content");
       if(!$content.find("textarea").exists()){
-        var content,
-            cContent = $.cookie("grid-content").split("Ꮻ");
-        /*for(i=0;i<cContent.length;i++){
-          content = markdown.parse(cContent[i]) == $content.html() ? cContent[i] : undefined;
-        }*/
-        content = $content.html();
+        var content = $content.html();
         $content.html('<textarea style="width: 100%;" class="editor" autofocus>'+content+'</textarea>');
         updateFrames();
       }
