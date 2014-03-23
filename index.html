@@ -93,7 +93,7 @@
       var content = $.cookie("grid-content").split("Ꮻ");
       
       $.each(layout, function(i) {
-        grid.add_widget('<li><div class="content">'+markdown.parse(content[i])+'</div></li>', this.size_x, this.size_y, this.col, this.row);
+        grid.add_widget('<li><div class="content">'+content[i]+'</div></li>', this.size_x, this.size_y, this.col, this.row);
       });
       
       render();
@@ -163,9 +163,10 @@
       if(!$content.find("textarea").exists()){
         var content,
             cContent = $.cookie("grid-content").split("Ꮻ");
-        for(i=0;i<cContent.length;i++){
+        /*for(i=0;i<cContent.length;i++){
           content = markdown.parse(cContent[i]) == $content.html() ? cContent[i] : undefined;
-        }
+        }*/
+        content = $content.html();
         $content.html('<textarea style="width: 100%;" class="editor" autofocus>'+content+'</textarea>');
         updateFrames();
       }
