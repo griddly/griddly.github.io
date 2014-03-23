@@ -188,12 +188,10 @@
       }
     }
     
-    function parseMD(input){
-      return markdown.parse(input);
-    }
-    
-    function parseHTML(input){
-      return html.parse(input);
+    function reset(){
+      $.removeCookie("grid-layout");
+      $.removeCookie("grid-content");
+      window.location.reload();
     }
     
     jQuery.fn.exists = function(){return this.length>0;}
