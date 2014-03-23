@@ -47,7 +47,9 @@
         widget_selector: ".widget",
         widget_margins: [10, 10],
         widget_base_dimensions: [140, 140],
-        helper: 'clone',
+        draggable: {
+          handle: 'header'
+        }
         resize: {
           enabled: true
         }
@@ -58,7 +60,7 @@
         }
       });
       
-      $(".gs-w").css("position","absolute");
+      $(".widget").css("position","absolute");
       addHandles();
       $(".content > iframe").parent().css("padding","0px");
       initFrames();
@@ -102,13 +104,13 @@
     
     function addHandles(){
       $(".drag-handle").remove();
-      $(".gs-w").prepend('<div class="drag-handle" align="center"></div>');
+      $(".widget").prepend('<div class="drag-handle" align="center"></div>');
       $(".gs-resize-handle").remove();
-      $(".gs-w").append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
+      $(".widget").append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
     }
     
     function createListeners(){
-      $('.gs-w').styleListener({
+      $('.widget').styleListener({
         styles: ['height'],
         changed: function(style) {
           if(style=='height')
@@ -137,6 +139,10 @@
       ///////////////////////////////////////////////////////////////////////////////////////////
       ///////////////////////////////////////////////////////////////////////////////////////////
       
+      keypressListener.register_combo({
+        "prevent_repeat" : false
+      });
+
       keypressListener.simple_combo("alt n", function(){
         addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
       });
@@ -147,7 +153,7 @@
     }
     
     function firstTimeInit(){
-      grid.add_widget('<li class="widget"><div class="content"><h1 align="center">Welcome to Griddly!</h1><p>Right click this box to edit it. &nbsp;If you want to load a website, copy its url and paste it here.</p></div></li>', 2, 2, 2, 1);
+      grid.add_widget('<li class="widget"><div class="content"><h1 align="center">Welcome to Griddly!</h1><p>Right click the bar above this box to edit it. &nbsp;If you want to load a website, copy its url and paste it here.</p></div></li>', 2, 2, 2, 1);
       saveLayout();
       render();
     }
@@ -194,7 +200,7 @@
     jQuery.fn.exists = function(){return this.length>0;}
     
     /*function initCSB(){
-      $(".gs-w").mCustomScrollbar({
+      $(".widget").mCustomScrollbar({
         theme:"dark-thick"
       });
     }*/
