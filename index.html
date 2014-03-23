@@ -138,14 +138,20 @@
       
       ///////////////////////////////////////////////////////////////////////////////////////////
       ///////////////////////////////////////////////////////////////////////////////////////////
-      
-      keypressListener.register_combo({
-        "prevent_repeat" : false
-      });
+    var options = [
+        {
+            "keys"          : "alt n",
+            "prevent_repeat"  : true,
+            "on_keyup"      : function(e) {
+                addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
 
+            }
+        }
+      ];
+    keypressListener.register_combo(options);
+      
       keypressListener.simple_combo("alt n", function(){
-        addWidget('<p align="center">Right click to edit.<br />To load a website, copy its url and paste it here.</p>',1,1,1,1);
-      });
+              });
       
       keypressListener.simple_combo("control enter", function(){
         updateWidget($(":focus").parent().parent());
